@@ -1,22 +1,19 @@
+//require express - gives us a function
+const express = require('express')
 
-//require express - gives us function
-
-const express = require('express');
-
-// creating an instance of express by calling the function returned above - which is an object
+//createing an instance of express by calling
+// the function returned above - which is an object
 const app = express();
-const port = 5001;
+const port = 5001
 
 //express static file serving - public is the folder name
-app.use(express.static('server/public'));
+app.use(express.static('server/public'))
 
-
-//starts out server
-app.listen(port, ()  => {
+//starts our server
+app.listen(port, () => {
     console.log('listening on port', port);
-});
-
-console.log("Server still serving?");
+})
+console.log("is server running?");
 
 // 1. npm start - starting the server loading server.js
 //2. go to localhost:5001(port number- set up a location- the connection to out server)
@@ -34,15 +31,16 @@ console.log("Server still serving?");
 //     { text: 'The more you read, the better you\'re going to become as a storyteller.', author: 'Stan Lee' },
 //     { text: 'May the force be with you', author: 'Everyone in star wars at some point' }
 // ];
-let quoteList = require('./modules/quoteList');
 
+let quoteList = require('./modules/quoteList')
+// when we visit http://localhost:5001/quotes
 //in our browser, express will call this function
-//need to add /qu
 app.get('/quotes', function(req,res) {
     console.log('Request for /quotes was made');
-     //send back the item in res.send() so we can use it in our browser
+    //send back the item in res.send()
+    //so we can use it in our browser
     res.send(quoteList)
-    // res.status(400).send('that request was not valid');
+    //res.status(400).send('that request was not valid');
 })
 
 // all of these are the same: Route = Path = URL above code 
